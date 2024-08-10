@@ -205,6 +205,20 @@
     "website_configuration": {
       "index_document": "index.html",
       "error_document": "error.html"
-    }
+    },
+    "objects": [
+      {
+        "key": "swagger.json",
+        "source_path": "./path/to/swagger.json"
+      },
+      {
+        "key": "index.html",
+        "source_path": "./path/to/index.html"
+      },
+      {
+        "key": "error.html",
+        "source_path": "./path/to/error.html"
+      }
+    ]
   }
 }
