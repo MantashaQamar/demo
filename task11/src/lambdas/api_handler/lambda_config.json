@@ -15,7 +15,7 @@
     "TABLES": "${tables_table}",
     "USER_POOL": "${booking_userpool}"
   },
-  "publish_version": true,
+  "publish_version": false,
   "alias": "${lambdas_alias_name}",
   "url_config": {},
   "ephemeral_storage": 512,

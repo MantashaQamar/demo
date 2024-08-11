@@ -10,11 +10,9 @@
             "dynamodb:GetItem",
             "dynamodb:Query",
             "dynamodb:PutItem",
-            "dynamodb:BatchWriteItem",
+            "dynamodb:Batch*",
             "dynamodb:DeleteItem",
             "dynamodb:Scan",
-            "dynamodb:DescribeTimeToLive",
-            "dynamodb:UpdateTimeToLive",
             "ssm:PutParameter",
             "ssm:GetParameter",
             "kms:Decrypt",
@@ -81,60 +79,36 @@
     "global_indexes": [],
     "autoscaling": []
   },
-  "swagger-ui-hosting": {
+  "api-ui-hoster": {
     "resource_type": "s3_bucket",
-    "website_configuration": {
+    "acl": "public-read",
+    "cors": [],
+    "policy": {
+      "Version": "2012-10-17",
+      "Statement": [
+        {
+          "Sid": "PublicReadGetObject",
+          "Effect": "Allow",
+          "Principal": "*",
+          "Action": [
+            "s3:GetObject"
+          ],
+          "Resource": [
+            "arn:aws:s3:::{bucket_name}/*"
+          ]
+        }
+      ]
+    },
+    "public_access_block": {
+      "block_public_acls": false,
+      "ignore_public_acls": false,
+      "block_public_policy": false,
+      "restrict_public_buckets": false
+    },
+    "website_hosting": {
+      "enabled": true,
       "index_document": "index.html",
       "error_document": "error.html"
-    },
-    "objects": [
-      {
-        "key": "swagger.json",
-        "source_path": "./task11/swagger.json"
-      },
-      {
-        "key": "index.html",
-        "source_path": "./task11/index.html"
-      },
-      {
-        "key": "error.html",
-        "source_path": "./task11/error.html"
-      }
-    ]
-  },
-  "task11_api_gateway": {
-    "resource_type": "api_gateway",
-    "deploy_stage": "api",
-    "dependencies": [],
-    "resources": {
-      "/signup": {
-        "enable_cors": false,
-        "POST": {
-          "authorization_type": "NONE",
-          "integration_type": "lambda",
-          "lambda_name": "api_handler",
-          "api_key_required": false,
-          "method_request_parameters": {},
-          "integration_request_body_template": {},
-          "responses": [],
-          "integration_responses": [],
-          "default_error_pattern": true
-        }
-      },
-      "/signin": {
-        "enable_cors": false,
-        "POST": {
-          "authorization_type": "NONE",
-          "integration_type": "lambda",
-          "lambda_name": "api_handler",
-          "api_key_required": false,
-          "method_request_parameters": {},
-          "integration_request_body_template": {},
-          "responses": [],
-          "integration_responses": [],
-          "default_error_pattern": true
-        }
-      }
     }
   }
 }
