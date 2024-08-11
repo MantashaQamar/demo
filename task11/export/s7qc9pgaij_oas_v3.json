@@ -433,45 +433,25 @@
   },
   "components": {
     "schemas": {
-      "Reservation": {
-        "type": "object",
-        "properties": {
-          "reservationId": {
-            "type": "string",
-            "description": "Unique identifier for the reservation."
-          },
-          "tableId": {
-            "type": "string",
-            "description": "Identifier for the table reserved."
-          },
-          "date": {
-            "type": "string",
-            "format": "date-time",
-            "description": "Date and time of the reservation."
-          }
-        }
-      },
-      "Table": {
-        "type": "object",
-        "properties": {
-          "tableId": {
-            "type": "string",
-            "description": "Unique identifier for the table."
-          },
-          "capacity": {
-            "type": "integer",
-            "description": "Number of seats at the table."
-          },
-          "location": {
-            "type": "string",
-            "description": "Location of the table within the restaurant."
-          }
-        }
-      },
       "ReservationList": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/Reservation"
+        }
+      },
+      "Reservation": {
+        "type": "object",
+        "properties": {
+          "reservationId": {
+            "type": "string"
+          },
+          "tableId": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          }
         }
       },
       "TableList": {
@@ -480,26 +460,37 @@
           "$ref": "#/components/schemas/Table"
         }
       },
+      "Table": {
+        "type": "object",
+        "properties": {
+          "tableId": {
+            "type": "string"
+          },
+          "capacity": {
+            "type": "integer"
+          },
+          "location": {
+            "type": "string"
+          }
+        }
+      },
       "AuthResponse": {
         "type": "object",
         "properties": {
           "token": {
-            "type": "string",
-            "description": "JWT token for authenticated sessions."
+            "type": "string"
           }
         }
       },
       "Empty": {
-        "type": "object",
-        "description": "An empty response body."
+        "type": "object"
       }
     },
     "securitySchemes": {
       "task11_api_authorizer": {
         "type": "apiKey",
         "name": "Authorization",
-        "in": "header",
-        "description": "Authorization header using the Bearer scheme. Example: 'Bearer {token}'"
+        "in": "header"
       }
     }
   }

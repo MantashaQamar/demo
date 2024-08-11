@@ -13,8 +13,8 @@
             "dynamodb:BatchWriteItem",
             "dynamodb:DeleteItem",
             "dynamodb:Scan",
-            "dynamodb:DescribeTimeToLive",   
-            "dynamodb:UpdateTimeToLive",     
+            "dynamodb:DescribeTimeToLive",
+            "dynamodb:UpdateTimeToLive",
             "ssm:PutParameter",
             "ssm:GetParameter",
             "kms:Decrypt",
@@ -101,5 +101,40 @@
         "source_path": "./task11/error.html"
       }
     ]
+  },
+  "task11_api_gateway": {
+    "resource_type": "api_gateway",
+    "deploy_stage": "api",
+    "dependencies": [],
+    "resources": {
+      "/signup": {
+        "enable_cors": false,
+        "POST": {
+          "authorization_type": "NONE",
+          "integration_type": "lambda",
+          "lambda_name": "api_handler",
+          "api_key_required": false,
+          "method_request_parameters": {},
+          "integration_request_body_template": {},
+          "responses": [],
+          "integration_responses": [],
+          "default_error_pattern": true
+        }
+      },
+      "/signin": {
+        "enable_cors": false,
+        "POST": {
+          "authorization_type": "NONE",
+          "integration_type": "lambda",
+          "lambda_name": "api_handler",
+          "api_key_required": false,
+          "method_request_parameters": {},
+          "integration_request_body_template": {},
+          "responses": [],
+          "integration_responses": [],
+          "default_error_pattern": true
+        }
+      }
+    }
   }
 }
